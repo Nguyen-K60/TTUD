@@ -4,27 +4,9 @@ using namespace std;
 int n, K, I;
 int so = -1;
 int COUNT = 0;
+int sum = 0;;
 int x[MAX];
-int check(int v, int k)
-{
-	if(v == 1)
-	{
-		return 1;
-	}
-	if(k<I)
-	{
-		return 1;
-	}
-	int sum = 0;
-	for(int i = k-1; i > k - I; i--)
-	{
-		if(x[i] == 1)
-		{
-			return 1;
-		}
-	}
-	return 0;;
-}
+
 void solution()
 {
 	for(int i = 1; i <= n; i++)
@@ -36,7 +18,15 @@ void TRY(int k)
 {
 	for(int v = 0; v <= 1; v++)
 	{
-		if(check(v, k))
+		if(v == 0)
+		{
+			sum++;
+		}
+		else
+		{
+			sum = 0;
+		}
+		if(sum < I)
 		{
 			x[k] = v;
 			if(k == n)
@@ -53,6 +43,7 @@ void TRY(int k)
 			{
 				TRY(k+1);
 			}
+			
 		}
 		
 	}
