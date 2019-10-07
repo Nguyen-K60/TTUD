@@ -4,10 +4,9 @@
 using namespace std;
 #define MAX 100000
 int nums[MAX];
-int n,K;
-int main()
+int n,k;
+void Solve(int n, int K)
 {
-    cin>>n>>K;
     int f = 1;
     int index = -1;
     for(int i = 1; i <= n; i++)
@@ -23,7 +22,7 @@ int main()
     if(index == -1)
     {
         cout<<-1;
-        return 0;
+        return ;
     }
     int dt = n - index - 1;
     int cur = 1;
@@ -69,5 +68,10 @@ int main()
     {
         cout<<nums[i]<<" ";
     }
+}
+int main()
+{
+    cin>>n>>k;
+    Solve(n, k);
     return 0;
 }

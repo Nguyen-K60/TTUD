@@ -1,57 +1,39 @@
 #include <bits/stdc++.h> 
 using namespace std; 
-int n, m, K;
-int COUNT = 0;
-int f = -1;
-vector<int> tmp;
-void makeCombiUtil(int n, int left, int k) 
-{ 
-    // Pushing this vector to a vector of vector 
-    if (k == 0) { 
-        COUNT++;
-        if(COUNT == K)
-        {
-            f = 1;
-            for(int i = 0; i < m; i++)
-            {
-                cout<<tmp[i]<<" ";
-            }
-        }
-        return; 
-    } 
-  
-    // i iterates from left to n. First time 
-    // left will be 1 
-    for (int i = left; i <= n; ++i) 
-    { 
-        
-        tmp.push_back(i); 
-        makeCombiUtil(n, i + 1, k - 1); 
-  
-        // Popping out last inserted element 
-        // from the vector 
-        tmp.pop_back(); 
-    } 
-} 
-  
-// Prints all combinations of size k of numbers 
-// from 1 to n. 
-void makeCombi(int n, int k) 
-{     
-    makeCombiUtil(n, 1, k); 
-} 
-  
-// Driver code 
-int main() 
-{ 
-    
-    cin>>n>>m>>K;
-    // given number 
+#define ll long long int 
+ll n, m, K;
 
-    makeCombi(n, m); 
-    if(f == -1)
-    {
-        cout<<f;
+ll binomialCoeff(ll n, ll k)  
+{   
+    // Since C(n, k) = C(n, n-k)  
+    if ( k > n - k ) 
+    { 
+        k = n - k;  
     }
+    ll num = 1, den = 1;
+    // Calculate value of  
+    // [n * (n-1) *---* (n-k+1)] / [k * (k-1) *----* 1]  
+    for (int i = 0; i < k; ++i)  
+    {  
+        num *= (n-i)
+        if(num % (i+1) == 0)
+        {
+            num /= (i+1);
+        }
+        else
+        {
+            den *= (i+1);
+        }
+    }  
+    return num/den; 
+} 
+void Solve(ll n, ll m, ll K)
+{
+
+}
+int main() 
+{     
+    cin>>n>>m>>K;
+    Solve();
     return 0; 
 }
