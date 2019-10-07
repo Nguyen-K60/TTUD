@@ -8,6 +8,7 @@ int load[MAX];//number of job of worker
 int cmin = 9999;//min value in c[][]
 int minC = 9999;// min cost
 int cost = 0; //current cost
+ 
 int check(int v, int k)
 {
 	if(load[v] >= K)
@@ -38,7 +39,7 @@ void TRY(int k)
 			}
 			else
 			{
-				if(cost + cmin*(N-k) < minC)
+				if(cost + cmin*(N-k+1) < minC)
 				{
 					TRY(k+1);
 				}
