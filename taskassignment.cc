@@ -39,7 +39,7 @@ void TRY(int k)
 			}
 			else
 			{
-				if(cost + cmin*(N-k+1) < minC)
+				if(cost + cmin*(N-k) < minC)
 				{
 					TRY(k+1);
 				}
