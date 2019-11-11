@@ -3,14 +3,7 @@ using namespace std;
 #define MAX 3001
 #define MAX1 101
 int N,K,c[MAX],a[MAX],F[MAX][MAX1];
-int check(int i, int j, int k)
-{
-	if(j < i && F[j][k-1] >= 0 && j + a[j] >= i)
-	{
-		return 1;
-	}
-	return 0;
-}
+
 void Solve()
 {
 	for(int i = 0; i <= N; i++)
