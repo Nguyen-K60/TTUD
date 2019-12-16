@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 int n;
-#define max 16
+#define max 18
 int appear[max];
 int c[max][max];
 int cmin = 9999999;
@@ -18,7 +18,13 @@ void solution()
 	if(r < MIN)
 	{
 		MIN = r;
+		for(int i = 1; i <= n; i++)
+		{
+			cout<<x[i]<<" ";
+		}
+		cout<<endl;
 	}
+	
 }
 void TRY(int k)
 {
@@ -64,6 +70,7 @@ int main()
 		appear[i] = 0;
 	}
 	TRY(1);
-	cout<<MIN;
+	cout<<MIN<<endl;
+	
 	return 0;
 }

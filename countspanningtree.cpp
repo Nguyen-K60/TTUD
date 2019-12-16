@@ -1,9 +1,11 @@
 #include <bits/stdc++.h>
-#define MAX 21
+#define MAX_N 50
+#define MAX_M 1000
+#define MAX 1000
 using namespace std;
 int n,m;
-vector <int> A[MAX];
-int b[MAX], e[MAX], X[MAX];
+vector <int> A[MAX], B[MAX];
+int b[MAX_M], e[MAX_N], X[MAX_N];
 int ans = 0;
 int r[MAX];//rank
 int p[MAX];//parent
@@ -36,9 +38,10 @@ int findSet(int x)
 	}
 	return p[x];
 }
-int check(int val, int k)
+
+int checkNoCycle(int val, int k)
 {
-	for(int i = 1; i <= N; i++)
+	for(int i = 1; i <= n; i++)
 	{
 		makeSet(i);
 	}
@@ -66,15 +69,27 @@ void solution()
 }
 void TRY(int k)
 {
-	for(int v = X[k-1] + 1; v <= M; v++)
+	for(int v = X[k-1] + 1; v <= m; v++)
 	{
-		int ok = check(v, k);
+		int ok = checkNoCycle(v, k);
+		if(ok)
+		{
+			X[k] = v;
+			if(k == n-1)
+			{
+				solution();
+			}
+			else
+			{
+				TRY(k+1);
+			}
+		}
 	}
 }
 void solve()
 {
 	ans = 0; 
-	rs = 0;
+	X[0] = 0;
 	TRY(1);
 }
 int main()
