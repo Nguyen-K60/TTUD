@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
-#define MAX 100001
+#define MAX 10001
 #define MAX_M 200002
 using namespace std;
+int minW = 99999;
 int N, M, K;
 vector<int> A[MAX], c[MAX];
 int S[MAX];
-int inS[MAX];
 int d[MAX], node[MAX], idx[MAX], sH;
 int s;
 int t;
@@ -95,10 +95,7 @@ void solve(int a, int b)
 	for (int i = 0; i < A[s].size(); i++)
 	{
 		int v = A[s][i];
-		if(inS[v] == 0)
-		{
-			//continue;
-		}
+
 		insert(v, c[s][i]);
 	}
 	while (sH>0)
@@ -108,18 +105,17 @@ void solve(int a, int b)
 		for (int i = 0; i < A[u].size(); i++)
 		{
 			int v = A[u][i];
-			if(inS[v] == 0)
-			{
-				//continue;
-			}
+
 			if (Fixed[v]) continue;
 			if (!inHeap(v))
 			{
 				int w = d[u] + c[u][i];
+				
 				insert(v, w);
 			}
 			else
 			{
+
 				if (d[v] > d[u] + c[u][i])
 				{
 					updateKey(v, d[u] + c[u][i]);
@@ -157,18 +153,16 @@ int main()
 		A[v].push_back(u);
 		c[u].push_back(w);
 		c[v].push_back(w);
+		if(w < minW)
+		{
+			minW = w;
+		}
 	}
 	cin>>K;
-	for(int i = 0; i <= N; i++)
-	{
-		inS[i] = 0;
-	}
+
 	for(int i = 1; i <= K; i++)
 	{
-		int a;
-		cin>>a;
-		S[i] = a;
-		inS[a] = 1;
+		cin>>S[i];
 	}
 	Solve();
 	return 0;
